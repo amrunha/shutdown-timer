@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace ShutdownTimer
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e) //tombol start
+        {
+            timer1.Enabled = true;
+            numericUpDown1.Enabled = false;
+        }
+
+        private void button2_Click(object sender, EventArgs e) //tombol stop
+        {
+            timer1.Enabled = false;
+            numericUpDown1.Enabled = true;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (numericUpDown1.Value == 0)
+            {
+                button2_Click(sender, e);
+                MessageBox.Show("Waktu habis!");
+            }
+            else 
+            {
+                numericUpDown1.Value--;            
+            }
+
+        }
+    }
+}
